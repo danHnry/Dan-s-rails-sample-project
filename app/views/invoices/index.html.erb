@@ -1,0 +1,11 @@
+<h1>Invoices</h1>
+
+<ul>
+  <% @invoices.each do |invoice| %>
+    <li>
+        <%= link_to invoice.name, invoice %>
+    </li>
+  <% end %>
+</ul> 
+
+<%= link_to "New Invoice", new_invoice_path %>

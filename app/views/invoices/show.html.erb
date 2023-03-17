@@ -1,0 +1,11 @@
+<h1><%= @invoice.name %></h1>
+
+<p><%= @invoice.description %></p>
+
+<ul>
+<li><%= link_to "Edit", edit_invoice_path(@invoice) %></li>
+<li><%= link_to "Destroy", invoice_path(@invoice), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
