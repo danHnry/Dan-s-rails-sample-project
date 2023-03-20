@@ -9,3 +9,23 @@
                     turbo_confirm: "Are you sure?"
                   } %></li>
 </ul>
+
+<h2>InvoiceItem</h2>
+<% @invoice.invoice_item.each do |invoice_item| %>
+  <p>
+    <strong>itemName:</strong>
+    <%= invoice_item.itemName %>
+  </p>
+
+<% end %>
+
+<h2>Add an item:</h2>
+<%= form_with model: [ @invoice, @invoice.invoice_item.build ] do |form| %>
+  <p>
+    <%= form.label :itemName %><br>
+    <%= form.text_field :itemName %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

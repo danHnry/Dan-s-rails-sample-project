@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  itemName: MyString
+  invoice: one
+
+two:
+  itemName: MyString
+  invoice: two
