@@ -1,4 +1,7 @@
 class InvoicesController < ApplicationController
+
+  http_basic_authenticate_with name: "dan", password: "pass1234", except: [:index, :show]
+ 
   def index
     @invoices = Invoice.all
   end
@@ -19,7 +22,7 @@ class InvoicesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
- end
+   end
 
  def edit
   @invoice = Invoice.find(params[:id])
@@ -40,7 +43,7 @@ class InvoicesController < ApplicationController
   @invoice.destroy
 
   redirect_to root_path, status: :see_other
-end
+ end
 
 
    private

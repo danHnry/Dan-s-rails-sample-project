@@ -2,15 +2,7 @@
 
 <p><%= @invoice.description %></p>
 
-<ul>
-<li><%= link_to "Edit", edit_invoice_path(@invoice) %></li>
-<li><%= link_to "Destroy", invoice_path(@invoice), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
-
-<h2>InvoiceItem</h2>
+<h2>Invoice Items:</h2>
 <% @invoice.invoice_item.each do |invoice_item| %>
   <p>
     <strong>itemName:</strong>
@@ -29,3 +21,12 @@
     <%= form.submit %>
   </p>
 <% end %>
+
+<ul>
+<li><%= link_to "Edit", edit_invoice_path(@invoice) %></li>
+<br>
+<li><%= link_to "Destroy", invoice_path(@invoice), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>

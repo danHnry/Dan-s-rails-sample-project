@@ -1,0 +1,7 @@
+<p>
+  <%= link_to "Destroy Item", [invoice_item.invoice, invoice_item],
+      data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+      } %>
+</p>
