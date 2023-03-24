@@ -1,7 +1,5 @@
 class InvoicesController < ApplicationController
 
-  http_basic_authenticate_with name: "dan", password: "pass1234", except: [:index, :show]
- 
   def index
     @invoices = Invoice.all
   end

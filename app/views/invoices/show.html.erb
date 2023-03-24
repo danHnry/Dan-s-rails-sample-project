@@ -9,6 +9,13 @@
     <%= invoice_item.itemName %>
   </p>
 
+  <p>
+  <%= link_to "Destroy Item", [invoice_item.invoice, invoice_item],
+      data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+      } %>
+  </p>
 <% end %>
 
 <h2>Add an item:</h2>

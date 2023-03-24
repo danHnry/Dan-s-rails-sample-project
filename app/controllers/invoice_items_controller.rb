@@ -1,6 +1,4 @@
 class InvoiceItemsController < ApplicationController
-  
-  http_basic_authenticate_with name: "dan", password: "pass1234", only: :destroy
 
   def create
         @invoice = Invoice.find(params[:invoice_id])
