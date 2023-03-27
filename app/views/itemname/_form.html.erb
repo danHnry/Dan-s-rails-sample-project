@@ -1,0 +1,10 @@
+<%= form_with model: [ @invoice, @invoice.items.build ] do |form| %>
+    <p>
+      <%= form.label :itemName %><br>
+      <%= form.text_field :itemName %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+<% end %>
+  

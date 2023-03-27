@@ -2,8 +2,36 @@
 
 <p><%= @invoice.description %></p>
 
+<h2>Invoice Items:</h2>
+<% @invoice.invoice_item.each do |invoice_item| %>
+  <p>
+    <strong>itemName:</strong>
+    <%= invoice_item.itemName %>
+  </p>
+
+  <p>
+  <%= link_to "Destroy Item", [invoice_item.invoice, invoice_item],
+      data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+      } %>
+  </p>
+<% end %>
+
+<h2>Add an item:</h2>
+<%= form_with model: [ @invoice, @invoice.invoice_item.build ] do |form| %>
+  <p>
+    <%= form.label :itemName %><br>
+    <%= form.text_field :itemName %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
 <ul>
 <li><%= link_to "Edit", edit_invoice_path(@invoice) %></li>
+<br>
 <li><%= link_to "Destroy", invoice_path(@invoice), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
