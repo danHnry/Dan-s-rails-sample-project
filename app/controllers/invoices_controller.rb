@@ -1,11 +1,11 @@
 class InvoicesController < ApplicationController
 
   def index
-    @invoices = Invoice.all
+    @invoices = current_user.invoices.all
   end
 
   def show
-    @invoice = Invoice.find(params[:id])
+    @invoice = current_user.invoices.find(params[:id])
   end
 
   def new
@@ -14,7 +14,7 @@ class InvoicesController < ApplicationController
 
   def create
     @invoice = Invoice.new(invoice_params)
-
+    @invoice.user = current_user
     if @invoice.save
       redirect_to @invoice
     else
@@ -23,11 +23,11 @@ class InvoicesController < ApplicationController
    end
 
  def edit
-  @invoice = Invoice.find(params[:id])
+  @invoice = current_user.invoices.find(params[:id])
  end
 
  def update
-  @invoice = Invoice.find(params[:id])
+  @invoice = current_user.invoices.find(params[:id])
 
   if @invoice.update(invoice_params)
     redirect_to @invoice
@@ -37,7 +37,7 @@ class InvoicesController < ApplicationController
  end
 
  def destroy
-  @invoice = Invoice.find(params[:id])
+  @invoice = current_user.invoices.find(params[:id])
   @invoice.destroy
 
   redirect_to root_path, status: :see_other
