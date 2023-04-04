@@ -17,6 +17,7 @@ class InvoicesController < ApplicationController
     @invoice.token = SecureRandom.uuid
     @invoice.user = current_user
     if @invoice.save
+      UserMailer.welcome_email(@user).deliver
       redirect_to @invoice
     else
       render :new, status: :unprocessable_entity

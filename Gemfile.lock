@@ -222,6 +222,7 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  actionmailer
   bootsnap
   capybara
   debug

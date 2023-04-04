@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 <h1><%= @invoice.name %></h1>
 
 <p><%= @invoice.description %></p>
@@ -18,6 +20,7 @@
   </p>
 <% end %>
 
+
 <h2>Add an item:</h2>
 <%= form_with model: [ @invoice, @invoice.invoice_item.build ] do |form| %>
   <p>
@@ -30,13 +33,17 @@
 <% end %>
 
 <ul>
-<li><%= link_to "Edit", edit_invoice_path(@invoice) %></li>
-<br>
-<li><%= link_to "Destroy", invoice_path(@invoice), data: {
+ <%= link_to "Edit", edit_invoice_path(@invoice), class: "button button-primary" %>
+  <br>
+  
+  </br>
+  <li><%= link_to "Destroy", invoice_path(@invoice), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %></li>
+                  }, class: "button button-danger" %></li>
 </ul>
-<h2>Share your inovoice</h2>
+
+<h2 class="invoice-share-heading">Share your invoice</h2>
+
 
 <li><%= link_to "Share", sharetoken_path(@invoice.token) %></li>
