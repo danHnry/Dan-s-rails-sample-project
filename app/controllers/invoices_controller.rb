@@ -14,6 +14,7 @@ class InvoicesController < ApplicationController
 
   def create
     @invoice = Invoice.new(invoice_params)
+    @invoice.token = SecureRandom.uuid
     @invoice.user = current_user
     if @invoice.save
       redirect_to @invoice
@@ -35,6 +36,11 @@ class InvoicesController < ApplicationController
     render :edit, status: :unprocessable_entity
   end
  end
+
+ def view
+  @invoice = Invoice.find_by(token: params[:token])
+  render :show 
+end
 
  def destroy
   @invoice = current_user.invoices.find(params[:id])

@@ -1,3 +1,5 @@
+<meta name="clipboard-write" content="true">
+
 <h1><%= @invoice.name %></h1>
 
 <p><%= @invoice.description %></p>
@@ -37,3 +39,42 @@
                     turbo_confirm: "Are you sure?"
                   } %></li>
 </ul>
+
+<h2>Share your invoice</h2>
+
+<li><%= link_to "Share", sharetoken_path(@invoice.token), id: "share-link" %></li>
+
+<script>
+  // Get the share link element
+  const shareLink = document.getElementById("share-link");
+
+  // Add a click event listener to the share link
+  shareLink.addEventListener("click", (event) => {
+
+    // Prevent the default link behavior
+    event.preventDefault();
+
+    // Get the share URL
+    const shareUrl = shareLink.href;
+
+    // Copy the share URL to the clipboard
+    const tempInput = document.createElement("input");
+    tempInput.setAttribute("value", shareUrl);
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    // Copy the current URL to the clipboard
+    const currentUrl = window.location.href;
+
+    navigator.clipboard.writeText(currentUrl).then(() => {
+      // Display a popup message
+      alert("URL copied to clipboard");
+     }).catch((error) => {
+      console.error("Failed to copy: ", error);
+    });
+
+  });
+  
+</script>
